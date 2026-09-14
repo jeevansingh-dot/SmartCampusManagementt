@@ -1,0 +1,992 @@
+/* =================================
+   DESIGN SYSTEM & VARIABLES
+================================= */
+
+:root {
+  --primary-dark: #0f172a;
+  --primary-navy: #1d3557;
+  --accent-blue: #3b82f6;
+  --accent-teal: #457b9d;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  --bg-gradient:
+    linear-gradient(
+      135deg,
+      #f0f6ff 0%,
+      #f8fafc 50%,
+      #eef2ff 100%
+    );
+
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(226, 232, 240, 0.8);
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.03);
+  --shadow-md: 0 10px 25px rgba(15, 23, 42, 0.06);
+  --shadow-lg: 0 18px 38px rgba(15, 23, 42, 0.1);
+
+  --transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* =================================
+   GLOBAL BOX SIZING
+================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.lost-found-page,
+.lost-found-page * {
+  box-sizing: border-box;
+}
+
+.lost-found-page img {
+  max-width: 100%;
+}
+
+/* =================================
+   LOST & FOUND PAGE
+================================= */
+
+.lost-found-page {
+  min-height: 100vh;
+  width: 100%;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(59, 130, 246, 0.08),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 80%,
+      rgba(69, 123, 157, 0.08),
+      transparent 40%
+    ),
+    var(--bg-gradient);
+
+  padding: 40px 24px 70px;
+
+  color: var(--text-main);
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+
+  overflow-x: hidden;
+}
+
+/* =================================
+   HEADER
+================================= */
+
+.lost-found-header {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto 36px;
+
+  text-align: center;
+}
+
+.lost-found-header h1 {
+  margin: 0 0 10px;
+
+  color: var(--primary-dark);
+
+  font-size: 32px;
+  font-weight: 800;
+
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+}
+
+.lost-found-header h2 {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 15px;
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+/* =================================
+   FORM CONTAINER
+================================= */
+
+.lost-found-form {
+  width: 100%;
+  max-width: 850px;
+
+  margin: 0 auto 44px;
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+
+  padding: 32px;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 20px;
+
+  box-shadow:
+    var(--shadow-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  transition: var(--transition);
+
+  overflow: hidden;
+}
+
+.lost-found-form:hover {
+  box-shadow:
+    var(--shadow-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* =================================
+   FORM GROUP
+================================= */
+
+.form-group {
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  min-width: 0;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+
+  color: #334155;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  letter-spacing: -0.1px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  max-width: 100%;
+
+  padding: 11px 14px;
+
+  border: 1px solid rgba(203, 213, 225, 0.9);
+
+  border-radius: var(--radius-sm);
+
+  background: rgba(255, 255, 255, 0.9);
+
+  color: var(--text-main);
+
+  font-family: inherit;
+  font-size: 13.5px;
+
+  outline: none;
+
+  transition: var(--transition);
+
+  box-shadow:
+    inset 0 1px 2px rgba(15, 23, 42, 0.02);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-light);
+}
+
+.form-group input:hover,
+.form-group select:hover,
+.form-group textarea:hover {
+  border-color: #b8c5d3;
+  background: #ffffff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent-blue);
+
+  background: #ffffff;
+
+  box-shadow:
+    0 0 0 4px rgba(59, 130, 246, 0.15);
+}
+
+.form-group input[readonly] {
+  background: #f1f5f9;
+
+  color: var(--text-muted);
+
+  border-color: #e2e8f0;
+
+  cursor: not-allowed;
+}
+
+.form-group textarea {
+  min-height: 110px;
+
+  resize: vertical;
+
+  line-height: 1.55;
+}
+
+/* =================================
+   FULL WIDTH FORM FIELDS
+================================= */
+
+.form-group:has(textarea),
+.lost-found-form .form-row,
+.submit-lost-found {
+  grid-column: 1 / -1;
+}
+
+/* =================================
+   FORM ROW
+================================= */
+
+.form-row {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 20px;
+}
+
+/* =================================
+   SUBMIT BUTTON
+================================= */
+
+.submit-lost-found {
+  width: 100%;
+  max-width: 100%;
+
+  padding: 13px;
+
+  border: none;
+  border-radius: var(--radius-sm);
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary-dark),
+      var(--primary-navy)
+    );
+
+  color: #ffffff;
+
+  font-size: 13.5px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.15);
+}
+
+.submit-lost-found:hover {
+  background:
+    linear-gradient(
+      135deg,
+      var(--primary-navy),
+      #254a79
+    );
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 18px rgba(15, 23, 42, 0.25);
+}
+
+.submit-lost-found:active {
+  transform: translateY(0);
+}
+
+.submit-lost-found:disabled {
+  background: #cbd5e1;
+
+  color: #94a3b8;
+
+  cursor: not-allowed;
+
+  transform: none;
+
+  box-shadow: none;
+}
+
+/* =================================
+   FILTERS
+================================= */
+
+.lost-found-filters {
+  width: 100%;
+  max-width: 1000px;
+
+  margin: 0 auto 28px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 10px;
+
+  flex-wrap: wrap;
+}
+
+.lost-found-filters button {
+  padding: 8px 18px;
+
+  border: 1px solid rgba(203, 213, 225, 0.8);
+
+  border-radius: 30px;
+
+  background: rgba(255, 255, 255, 0.7);
+
+  color: var(--text-muted);
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+
+  backdrop-filter: blur(8px);
+
+  white-space: nowrap;
+}
+
+.lost-found-filters button:hover {
+  border-color: var(--accent-blue);
+
+  color: var(--accent-blue);
+
+  background: #ffffff;
+
+  transform: translateY(-1px);
+}
+
+.lost-found-filters button.active {
+  background: var(--primary-dark);
+
+  border-color: var(--primary-dark);
+
+  color: #ffffff;
+
+  box-shadow:
+    0 4px 12px rgba(15, 23, 42, 0.2);
+}
+
+/* =================================
+   ITEMS GRID
+================================= */
+
+.lost-found-grid {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(auto-fit, minmax(250px, 1fr));
+
+  gap: 22px;
+}
+
+/* =================================
+   ITEM CARD
+================================= */
+
+.lost-found-card {
+  position: relative;
+
+  width: 100%;
+  min-width: 0;
+
+  background: var(--card-bg);
+
+  border: 1px solid var(--card-border);
+
+  border-radius: var(--radius-md);
+
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+
+  box-shadow: var(--shadow-sm);
+
+  transition: var(--transition);
+
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+
+  overflow: hidden;
+}
+
+.lost-found-card:hover {
+  transform: translateY(-6px);
+
+  background: #ffffff;
+
+  border-color:
+    rgba(59, 130, 246, 0.3);
+
+  box-shadow: var(--shadow-lg);
+}
+
+/* =================================
+   IMAGE
+================================= */
+
+.item-image {
+  width: 100%;
+  height: 155px;
+
+  object-fit: cover;
+
+  border-radius: var(--radius-sm);
+
+  margin-bottom: 14px;
+
+  display: block;
+
+  background: #e2e8f0;
+
+  transition: transform 0.3s ease;
+}
+
+.lost-found-card:hover .item-image {
+  transform: scale(1.03);
+}
+
+/* =================================
+   CARD CONTENT
+================================= */
+
+.lost-found-card h3 {
+  margin: 0 0 8px;
+
+  padding-right: 70px;
+
+  color: var(--primary-dark);
+
+  font-size: 17px;
+  font-weight: 700;
+
+  line-height: 1.35;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.lost-found-card p {
+  margin: 4px 0;
+
+  color: var(--text-muted);
+
+  font-size: 12.5px;
+
+  line-height: 1.55;
+
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.lost-found-card p strong {
+  color: #334155;
+
+  font-weight: 600;
+}
+
+/* =================================
+   STATUS BADGES
+================================= */
+
+.status {
+  position: absolute;
+
+  top: 24px;
+  right: 24px;
+
+  padding: 4px 10px;
+
+  border-radius: 20px;
+
+  font-size: 9px;
+  font-weight: 800;
+
+  letter-spacing: 0.5px;
+
+  text-transform: uppercase;
+
+  backdrop-filter: blur(4px);
+
+  z-index: 2;
+
+  white-space: nowrap;
+}
+
+.status.open {
+  background: rgba(220, 252, 231, 0.9);
+
+  color: #15803d;
+
+  border:
+    1px solid rgba(187, 247, 208, 0.8);
+}
+
+.status.claimed {
+  background: rgba(254, 226, 226, 0.9);
+
+  color: #b91c1c;
+
+  border:
+    1px solid rgba(254, 202, 202, 0.8);
+}
+
+/* =================================
+   EMPTY STATE
+================================= */
+
+.no-items {
+  grid-column: 1 / -1;
+
+  width: 100%;
+
+  padding: 60px 20px;
+
+  background: rgba(255, 255, 255, 0.6);
+
+  border: 2px dashed #cbd5e1;
+
+  border-radius: var(--radius-md);
+
+  text-align: center;
+
+  color: var(--text-light);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  line-height: 1.5;
+}
+
+/* =================================
+   TABLET
+================================= */
+
+@media (max-width: 900px) {
+
+  .lost-found-page {
+    padding: 34px 20px 60px;
+  }
+
+  .lost-found-header {
+    margin-bottom: 30px;
+  }
+
+  .lost-found-header h1 {
+    font-size: 29px;
+  }
+
+  .lost-found-form {
+    max-width: 760px;
+
+    padding: 27px;
+
+    gap: 18px;
+  }
+
+  .form-row {
+    gap: 18px;
+  }
+
+  .lost-found-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+  }
+
+  .lost-found-card {
+    padding: 15px;
+  }
+
+  .item-image {
+    height: 150px;
+  }
+}
+
+/* =================================
+   TABLET / SMALL LAPTOP
+================================= */
+
+@media (max-width: 800px) {
+
+  .lost-found-form {
+    grid-template-columns: 1fr;
+
+    padding: 24px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+
+    gap: 16px;
+  }
+
+  .form-group:has(textarea),
+  .lost-found-form .form-row,
+  .submit-lost-found {
+    grid-column: 1;
+  }
+
+  .lost-found-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 16px;
+  }
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 600px) {
+
+  .lost-found-page {
+    padding: 25px 15px 50px;
+  }
+
+  .lost-found-header {
+    margin-bottom: 25px;
+  }
+
+  .lost-found-header h1 {
+    font-size: 25px;
+
+    letter-spacing: -0.4px;
+  }
+
+  .lost-found-header h2 {
+    font-size: 12px;
+
+    line-height: 1.55;
+  }
+
+  .lost-found-form {
+    padding: 21px 17px;
+
+    margin-bottom: 34px;
+
+    border-radius: 15px;
+
+    gap: 0;
+  }
+
+  .form-group {
+    margin-bottom: 16px;
+  }
+
+  .form-group label {
+    margin-bottom: 7px;
+
+    font-size: 11px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 10px 12px;
+
+    font-size: 12px;
+
+    border-radius: 8px;
+  }
+
+  .form-group textarea {
+    min-height: 105px;
+  }
+
+  .submit-lost-found {
+    margin-top: 2px;
+
+    padding: 12px;
+
+    font-size: 12px;
+  }
+
+  .lost-found-filters {
+    margin-bottom: 22px;
+
+    gap: 7px;
+  }
+
+  .lost-found-filters button {
+    padding: 7px 13px;
+
+    font-size: 10px;
+  }
+
+  .lost-found-grid {
+    grid-template-columns: 1fr;
+
+    gap: 15px;
+  }
+
+  .lost-found-card {
+    padding: 17px;
+
+    border-radius: 13px;
+  }
+
+  .item-image {
+    height: 175px;
+
+    margin-bottom: 13px;
+  }
+
+  .lost-found-card h3 {
+    font-size: 16px;
+
+    padding-right: 60px;
+  }
+
+  .lost-found-card p {
+    font-size: 11px;
+
+    line-height: 1.6;
+  }
+
+  .status {
+    top: 22px;
+    right: 22px;
+
+    padding: 4px 9px;
+
+    font-size: 8px;
+  }
+
+  .no-items {
+    padding: 45px 15px;
+
+    font-size: 12px;
+  }
+}
+
+/* =================================
+   SMALL MOBILE
+================================= */
+
+@media (max-width: 430px) {
+
+  .lost-found-page {
+    padding: 22px 11px 40px;
+  }
+
+  .lost-found-header {
+    margin-bottom: 22px;
+  }
+
+  .lost-found-header h1 {
+    font-size: 22px;
+  }
+
+  .lost-found-header h2 {
+    font-size: 11px;
+  }
+
+  .lost-found-form {
+    padding: 19px 14px;
+
+    border-radius: 13px;
+  }
+
+  .form-group {
+    margin-bottom: 14px;
+  }
+
+  .form-group label {
+    font-size: 10px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 9px 10px;
+
+    font-size: 11px;
+  }
+
+  .form-group textarea {
+    min-height: 100px;
+  }
+
+  .submit-lost-found {
+    padding: 11px;
+
+    font-size: 11px;
+  }
+
+  .lost-found-filters {
+    gap: 5px;
+
+    margin-bottom: 20px;
+  }
+
+  .lost-found-filters button {
+    padding: 6px 10px;
+
+    font-size: 9px;
+  }
+
+  .lost-found-card {
+    padding: 15px;
+
+    border-radius: 12px;
+  }
+
+  .item-image {
+    height: 160px;
+  }
+
+  .lost-found-card h3 {
+    font-size: 15px;
+
+    padding-right: 50px;
+  }
+
+  .lost-found-card p {
+    font-size: 10px;
+  }
+
+  .status {
+    top: 19px;
+    right: 19px;
+
+    padding: 4px 8px;
+
+    font-size: 7.5px;
+  }
+
+  .no-items {
+    padding: 40px 12px;
+
+    font-size: 11px;
+  }
+}
+
+/* =================================
+   VERY SMALL MOBILE
+================================= */
+
+@media (max-width: 350px) {
+
+  .lost-found-page {
+    padding: 20px 9px 34px;
+  }
+
+  .lost-found-header h1 {
+    font-size: 20px;
+  }
+
+  .lost-found-header h2 {
+    font-size: 10px;
+  }
+
+  .lost-found-form {
+    padding: 17px 11px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 8px 9px;
+
+    font-size: 10px;
+  }
+
+  .form-group textarea {
+    min-height: 90px;
+  }
+
+  .submit-lost-found {
+    padding: 10px;
+
+    font-size: 10px;
+  }
+
+  .lost-found-filters button {
+    padding: 5px 8px;
+
+    font-size: 8px;
+  }
+
+  .lost-found-grid {
+    gap: 12px;
+  }
+
+  .lost-found-card {
+    padding: 14px;
+  }
+
+  .item-image {
+    height: 145px;
+  }
+
+  .lost-found-card h3 {
+    font-size: 14px;
+  }
+
+  .lost-found-card p {
+    font-size: 9px;
+  }
+
+  .status {
+    top: 17px;
+    right: 17px;
+
+    font-size: 7px;
+    padding: 3px 7px;
+  }
+}

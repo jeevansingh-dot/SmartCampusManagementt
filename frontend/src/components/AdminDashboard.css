@@ -1,0 +1,1509 @@
+/* =========================================
+   CAMPUSCONNECT AI
+   ADMIN DASHBOARD
+========================================= */
+
+* {
+  box-sizing: border-box;
+}
+
+.admin-dashboard,
+.admin-dashboard * {
+  box-sizing: border-box;
+}
+
+.admin-dashboard {
+  min-height: 100vh;
+  width: 100%;
+
+  background:
+    radial-gradient(
+      circle at 5% 5%,
+      rgba(37, 99, 235, 0.17),
+      transparent 27%
+    ),
+    radial-gradient(
+      circle at 95% 10%,
+      rgba(14, 165, 233, 0.13),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(99, 102, 241, 0.08),
+      transparent 34%
+    ),
+    linear-gradient(
+      135deg,
+      #e8f1f8 0%,
+      #f8fbff 48%,
+      #edf5fb 100%
+    );
+
+  color: #1e293b;
+
+  position: relative;
+
+  overflow-x: hidden;
+}
+
+/* =========================================
+   BACKGROUND GLOW
+========================================= */
+
+.admin-dashboard::before {
+  content: "";
+
+  position: fixed;
+
+  width: 420px;
+  height: 420px;
+
+  top: 120px;
+  left: -220px;
+
+  border-radius: 50%;
+
+  background: rgba(59, 130, 246, 0.07);
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+.admin-dashboard::after {
+  content: "";
+
+  position: fixed;
+
+  width: 430px;
+  height: 430px;
+
+  right: -230px;
+  bottom: -180px;
+
+  border-radius: 50%;
+
+  background: rgba(14, 165, 233, 0.07);
+
+  filter: blur(90px);
+
+  pointer-events: none;
+}
+
+/* =========================================
+   HEADER
+========================================= */
+
+.admin-header {
+  width: 100%;
+  min-height: 76px;
+
+  padding: 14px 42px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #142b49,
+      #1d3f67
+    );
+
+  color: white;
+
+  box-shadow:
+    0 5px 25px rgba(15, 23, 42, 0.18);
+
+  position: relative;
+
+  z-index: 5;
+}
+
+/* =========================================
+   BRAND
+========================================= */
+
+.admin-brand {
+  min-width: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 12px;
+}
+
+.admin-brand-icon {
+  width: 43px;
+  min-width: 43px;
+
+  height: 43px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  background:
+    rgba(255, 255, 255, 0.10);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.12);
+
+  font-size: 21px;
+}
+
+.admin-brand h1 {
+  margin: 0;
+
+  font-size: 19px;
+
+  font-weight: 700;
+
+  line-height: 1.25;
+}
+
+.admin-brand p {
+  margin: 4px 0 0;
+
+  color: #c5d5e5;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+}
+
+/* =========================================
+   HEADER RIGHT
+========================================= */
+
+.admin-header-right {
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 20px;
+}
+
+.admin-profile {
+  display: flex;
+
+  align-items: center;
+
+  gap: 9px;
+
+  min-width: 0;
+}
+
+.admin-avatar {
+  width: 36px;
+  min-width: 36px;
+
+  height: 36px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #457b9d,
+      #2563eb
+    );
+
+  color: white;
+
+  font-size: 13px;
+
+  font-weight: 700;
+}
+
+.admin-profile strong {
+  display: block;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  white-space: nowrap;
+}
+
+.admin-profile span {
+  display: block;
+
+  margin-top: 2px;
+
+  color: #b9c9da;
+
+  font-size: 9px;
+
+  white-space: nowrap;
+}
+
+/* =========================================
+   LOGOUT
+========================================= */
+
+.admin-logout {
+  flex-shrink: 0;
+
+  padding: 9px 15px;
+
+  border:
+    1px solid rgba(255, 255, 255, 0.16);
+
+  border-radius: 8px;
+
+  background:
+    rgba(255, 255, 255, 0.08);
+
+  color: white;
+
+  font-size: 11px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+  white-space: nowrap;
+}
+
+.admin-logout:hover {
+  background: #e63946;
+
+  border-color: #e63946;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 5px 15px rgba(230, 57, 70, 0.25);
+}
+
+.admin-logout:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   MAIN
+========================================= */
+
+.admin-main {
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 45px 30px 60px;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+/* =========================================
+   INTRO
+========================================= */
+
+.admin-intro {
+  width: 100%;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 30px;
+}
+
+.admin-label {
+  margin: 0 0 7px;
+
+  color: #457b9d;
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.7px;
+}
+
+.admin-intro h2 {
+  margin: 0 0 6px;
+
+  color: #142b49;
+
+  font-size: 29px;
+
+  font-weight: 750;
+
+  letter-spacing: -0.6px;
+
+  line-height: 1.25;
+}
+
+.admin-intro p:last-child {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   STATUS
+========================================= */
+
+.admin-status {
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  padding: 9px 13px;
+
+  border:
+    1px solid #dcebe2;
+
+  border-radius: 22px;
+
+  background:
+    rgba(240, 250, 244, 0.90);
+
+  color: #258044;
+
+  font-size: 10px;
+
+  font-weight: 650;
+
+  white-space: nowrap;
+}
+
+.status-dot {
+  width: 7px;
+  min-width: 7px;
+
+  height: 7px;
+
+  border-radius: 50%;
+
+  background: #2ca25f;
+
+  box-shadow:
+    0 0 0 4px rgba(44, 162, 95, 0.10);
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.dashboard-loading {
+  width: 100%;
+
+  padding: 35px;
+
+  background:
+    rgba(255, 255, 255, 0.90);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 14px;
+
+  color: #64748b;
+
+  text-align: center;
+
+  font-size: 13px;
+
+  line-height: 1.5;
+
+  box-shadow:
+    0 7px 22px rgba(15, 23, 42, 0.05);
+
+  backdrop-filter: blur(10px);
+}
+
+/* =========================================
+   STATS
+========================================= */
+
+.stats-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(5, minmax(0, 1fr));
+
+  gap: 15px;
+
+  margin-bottom: 48px;
+}
+
+/* =========================================
+   STAT CARD
+========================================= */
+
+.stat-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 110px;
+
+  padding: 18px;
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 13px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(248, 251, 255, 0.94)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 14px;
+
+  box-shadow:
+    0 7px 22px rgba(15, 23, 42, 0.055);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  backdrop-filter: blur(10px);
+}
+
+.stat-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #1d3557,
+      #457b9d,
+      #2563eb
+    );
+
+  opacity: 0;
+
+  transition: 0.25s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+
+  border-color: #cbdbea;
+
+  box-shadow:
+    0 15px 32px rgba(15, 23, 42, 0.10);
+}
+
+.stat-card:hover::before {
+  opacity: 1;
+}
+
+/* =========================================
+   STAT ICONS
+========================================= */
+
+.stat-icon {
+  width: 45px;
+  min-width: 45px;
+
+  height: 45px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 12px;
+
+  font-size: 20px;
+
+  transition: 0.25s ease;
+}
+
+.stat-card:hover .stat-icon {
+  transform: scale(1.07);
+}
+
+.complaints-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #e7f1fa,
+      #dcecf8
+    );
+}
+
+.pending-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #fff5d9,
+      #ffefc2
+    );
+}
+
+.progress-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #e8f3ff,
+      #dcecff
+    );
+}
+
+.resolved-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #eaf8ef,
+      #ddf4e8
+    );
+}
+
+.lost-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #f1edff,
+      #e8e2ff
+    );
+}
+
+/* =========================================
+   STAT TEXT
+========================================= */
+
+.stat-info {
+  min-width: 0;
+}
+
+.stat-info span {
+  display: block;
+
+  color: #64748b;
+
+  font-size: 10px;
+
+  line-height: 1.4;
+
+  overflow-wrap: anywhere;
+}
+
+.stat-info strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color: #162c4a;
+
+  font-size: 25px;
+
+  font-weight: 750;
+
+  line-height: 1.2;
+}
+
+/* =========================================
+   MANAGEMENT
+========================================= */
+
+.management-section {
+  margin-top: 5px;
+}
+
+.section-title {
+  margin-bottom: 21px;
+}
+
+.section-title h2 {
+  margin: 0 0 5px;
+
+  color: #162c4a;
+
+  font-size: 22px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+}
+
+.section-title p {
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.5;
+}
+
+/* =========================================
+   MANAGEMENT GRID
+========================================= */
+
+.management-grid {
+  width: 100%;
+
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 22px;
+}
+
+/* =========================================
+   MANAGEMENT CARD
+========================================= */
+
+.management-card {
+  position: relative;
+
+  min-width: 0;
+
+  padding: 27px;
+
+  background:
+    linear-gradient(
+      145deg,
+      rgba(255, 255, 255, 0.98),
+      rgba(248, 251, 255, 0.94)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.95);
+
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(15, 23, 42, 0.055);
+
+  overflow: hidden;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+
+  backdrop-filter: blur(10px);
+}
+
+.management-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      #162c4a,
+      #457b9d,
+      #2563eb
+    );
+}
+
+.management-card::after {
+  content: "";
+
+  position: absolute;
+
+  width: 150px;
+  height: 150px;
+
+  right: -75px;
+  bottom: -75px;
+
+  border-radius: 50%;
+
+  background:
+    rgba(37, 99, 235, 0.035);
+
+  transition: 0.3s ease;
+}
+
+.management-card:hover {
+  transform: translateY(-6px);
+
+  border-color: #c8d8e6;
+
+  box-shadow:
+    0 17px 36px rgba(15, 23, 42, 0.10);
+}
+
+.management-card:hover::after {
+  transform: scale(1.4);
+}
+
+/* =========================================
+   MANAGEMENT TOP
+========================================= */
+
+.management-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 12px;
+
+  margin-bottom: 20px;
+}
+
+.management-icon {
+  width: 50px;
+  min-width: 50px;
+
+  height: 50px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 13px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #e8f1f8,
+      #dcecf8
+    );
+
+  font-size: 23px;
+
+  transition: 0.25s ease;
+}
+
+.management-card:hover .management-icon {
+  transform: scale(1.06);
+}
+
+.management-arrow {
+  color: #c4cfda;
+
+  font-size: 25px;
+
+  transition: 0.25s ease;
+
+  flex-shrink: 0;
+}
+
+.management-card:hover .management-arrow {
+  color: #457b9d;
+
+  transform: translateX(5px);
+}
+
+/* =========================================
+   MANAGEMENT CONTENT
+========================================= */
+
+.management-card h3 {
+  margin: 0 0 8px;
+
+  color: #162c4a;
+
+  font-size: 18px;
+
+  font-weight: 700;
+
+  line-height: 1.3;
+
+  overflow-wrap: anywhere;
+}
+
+.management-card p {
+  max-width: 450px;
+
+  min-height: 38px;
+
+  margin: 0;
+
+  color: #64748b;
+
+  font-size: 12px;
+
+  line-height: 1.65;
+
+  overflow-wrap: anywhere;
+}
+
+/* =========================================
+   MANAGEMENT BUTTON
+========================================= */
+
+.management-btn {
+  margin-top: 21px;
+
+  display: inline-flex;
+
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  padding: 10px 16px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #1d3557,
+      #24538a,
+      #2563eb
+    );
+
+  color: white;
+
+  font-size: 11px;
+
+  font-weight: 650;
+
+  cursor: pointer;
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+  white-space: nowrap;
+}
+
+.management-btn span {
+  font-size: 15px;
+
+  transition: 0.2s ease;
+}
+
+.management-btn:hover {
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 7px 17px rgba(37, 99, 235, 0.22);
+}
+
+.management-btn:hover span {
+  transform: translateX(3px);
+}
+
+.management-btn:active {
+  transform: translateY(0);
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.admin-footer {
+  position: relative;
+
+  z-index: 2;
+
+  min-height: 58px;
+
+  padding: 20px;
+
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 8px;
+
+  border-top:
+    1px solid rgba(203, 213, 225, 0.7);
+
+  background:
+    rgba(248, 250, 252, 0.80);
+
+  color: #94a3b8;
+
+  font-size: 10px;
+
+  text-align: center;
+
+  backdrop-filter: blur(8px);
+}
+
+.admin-footer span:first-child {
+  color: #64748b;
+
+  font-weight: 600;
+}
+
+/* =========================================
+   LARGE TABLET / SMALL LAPTOP
+========================================= */
+
+@media (max-width: 1050px) {
+
+  .admin-header {
+    padding: 14px 28px;
+  }
+
+  .admin-main {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .stats-grid {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+
+    gap: 15px;
+  }
+
+  .stat-card {
+    padding: 17px;
+  }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 850px) {
+
+  .admin-header {
+    padding: 13px 22px;
+
+    min-height: 70px;
+  }
+
+  .admin-header-right {
+    gap: 12px;
+  }
+
+  .admin-profile {
+    display: none;
+  }
+
+  .admin-main {
+    padding: 34px 20px 48px;
+  }
+
+  .admin-intro {
+    align-items: flex-start;
+
+    gap: 15px;
+  }
+
+  .admin-intro h2 {
+    font-size: 25px;
+  }
+
+  .stats-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-bottom: 40px;
+  }
+
+  .management-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+  .management-card {
+    padding: 23px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .admin-dashboard {
+    overflow-x: hidden;
+  }
+
+  .admin-header {
+    padding: 11px 15px;
+
+    min-height: 64px;
+
+    gap: 10px;
+  }
+
+  .admin-brand {
+    gap: 9px;
+  }
+
+  .admin-brand-icon {
+    width: 37px;
+    min-width: 37px;
+
+    height: 37px;
+
+    border-radius: 10px;
+
+    font-size: 18px;
+  }
+
+  .admin-brand h1 {
+    font-size: 15px;
+  }
+
+  .admin-brand p {
+    margin-top: 3px;
+
+    font-size: 8px;
+  }
+
+  .admin-logout {
+    padding: 8px 11px;
+
+    font-size: 9px;
+  }
+
+  .admin-main {
+    padding: 27px 15px 40px;
+  }
+
+  .admin-intro {
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 12px;
+
+    margin-bottom: 25px;
+  }
+
+  .admin-label {
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .admin-intro h2 {
+    font-size: 23px;
+
+    letter-spacing: -0.4px;
+  }
+
+  .admin-intro p:last-child {
+    font-size: 11px;
+  }
+
+  .admin-status {
+    align-self: flex-start;
+
+    padding: 8px 11px;
+
+    font-size: 9px;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+
+    gap: 12px;
+
+    margin-bottom: 36px;
+  }
+
+  .stat-card {
+    min-height: 88px;
+
+    padding: 16px;
+
+    gap: 12px;
+  }
+
+  .stat-icon {
+    width: 42px;
+    min-width: 42px;
+
+    height: 42px;
+
+    font-size: 18px;
+  }
+
+  .stat-info span {
+    font-size: 9px;
+  }
+
+  .stat-info strong {
+    font-size: 23px;
+  }
+
+  .section-title {
+    margin-bottom: 18px;
+  }
+
+  .section-title h2 {
+    font-size: 20px;
+  }
+
+  .section-title p {
+    font-size: 11px;
+  }
+
+  .management-grid {
+    gap: 15px;
+  }
+
+  .management-card {
+    padding: 20px;
+
+    border-radius: 14px;
+  }
+
+  .management-top {
+    margin-bottom: 17px;
+  }
+
+  .management-icon {
+    width: 45px;
+    min-width: 45px;
+
+    height: 45px;
+
+    border-radius: 11px;
+
+    font-size: 20px;
+  }
+
+  .management-arrow {
+    font-size: 22px;
+  }
+
+  .management-card h3 {
+    font-size: 16px;
+  }
+
+  .management-card p {
+    min-height: auto;
+
+    font-size: 11px;
+
+    line-height: 1.6;
+  }
+
+  .management-btn {
+    width: 100%;
+
+    margin-top: 18px;
+
+    padding: 10px 13px;
+
+    font-size: 10px;
+  }
+
+  .admin-footer {
+    min-height: 54px;
+
+    padding: 17px 14px;
+
+    flex-wrap: wrap;
+
+    font-size: 9px;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 430px) {
+
+  .admin-header {
+    padding: 10px 11px;
+  }
+
+  .admin-brand {
+    gap: 7px;
+  }
+
+  .admin-brand-icon {
+    width: 34px;
+    min-width: 34px;
+
+    height: 34px;
+
+    font-size: 16px;
+  }
+
+  .admin-brand h1 {
+    font-size: 13px;
+  }
+
+  .admin-brand p {
+    font-size: 7px;
+  }
+
+  .admin-logout {
+    padding: 7px 9px;
+
+    border-radius: 7px;
+
+    font-size: 8px;
+  }
+
+  .admin-main {
+    padding: 23px 11px 35px;
+  }
+
+  .admin-intro h2 {
+    font-size: 21px;
+  }
+
+  .admin-intro p:last-child {
+    font-size: 10px;
+  }
+
+  .admin-status {
+    padding: 7px 10px;
+
+    font-size: 8px;
+  }
+
+  .stats-grid {
+    gap: 10px;
+  }
+
+  .stat-card {
+    min-height: 82px;
+
+    padding: 14px;
+
+    gap: 10px;
+
+    border-radius: 12px;
+  }
+
+  .stat-icon {
+    width: 39px;
+    min-width: 39px;
+
+    height: 39px;
+
+    border-radius: 10px;
+
+    font-size: 17px;
+  }
+
+  .stat-info span {
+    font-size: 8px;
+  }
+
+  .stat-info strong {
+    margin-top: 3px;
+
+    font-size: 21px;
+  }
+
+  .section-title h2 {
+    font-size: 18px;
+  }
+
+  .section-title p {
+    font-size: 10px;
+  }
+
+  .management-card {
+    padding: 17px;
+
+    border-radius: 12px;
+  }
+
+  .management-icon {
+    width: 42px;
+    min-width: 42px;
+
+    height: 42px;
+
+    font-size: 18px;
+  }
+
+  .management-arrow {
+    font-size: 20px;
+  }
+
+  .management-card h3 {
+    font-size: 15px;
+  }
+
+  .management-card p {
+    font-size: 10px;
+  }
+
+  .management-btn {
+    padding: 9px 11px;
+
+    font-size: 9px;
+  }
+
+  .admin-footer {
+    padding: 15px 10px;
+
+    font-size: 8px;
+
+    gap: 5px;
+  }
+}
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 350px) {
+
+  .admin-header {
+    padding: 9px 8px;
+  }
+
+  .admin-brand-icon {
+    width: 31px;
+    min-width: 31px;
+
+    height: 31px;
+
+    font-size: 14px;
+  }
+
+  .admin-brand h1 {
+    font-size: 11px;
+  }
+
+  .admin-brand p {
+    display: none;
+  }
+
+  .admin-logout {
+    padding: 6px 8px;
+
+    font-size: 7px;
+  }
+
+  .admin-main {
+    padding: 20px 9px 30px;
+  }
+
+  .admin-intro h2 {
+    font-size: 19px;
+  }
+
+  .admin-intro p:last-child {
+    font-size: 9px;
+  }
+
+  .admin-status {
+    padding: 6px 8px;
+
+    font-size: 7px;
+  }
+
+  .status-dot {
+    width: 6px;
+    min-width: 6px;
+
+    height: 6px;
+  }
+
+  .stat-card {
+    min-height: 76px;
+
+    padding: 12px;
+  }
+
+  .stat-icon {
+    width: 36px;
+    min-width: 36px;
+
+    height: 36px;
+
+    font-size: 15px;
+  }
+
+  .stat-info span {
+    font-size: 7px;
+  }
+
+  .stat-info strong {
+    font-size: 19px;
+  }
+
+  .section-title h2 {
+    font-size: 17px;
+  }
+
+  .management-card {
+    padding: 15px;
+  }
+
+  .management-card h3 {
+    font-size: 14px;
+  }
+
+  .management-card p {
+    font-size: 9px;
+  }
+
+  .management-btn {
+    padding: 8px;
+
+    font-size: 8px;
+  }
+}

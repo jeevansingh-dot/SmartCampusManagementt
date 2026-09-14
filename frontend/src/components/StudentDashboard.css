@@ -1,0 +1,1639 @@
+/* =========================================
+   DESIGN SYSTEM & VARIABLES
+========================================= */
+
+:root {
+  --primary-dark: #0f172a;
+  --primary-accent: #1e293b;
+
+  --accent-blue: #3b82f6;
+  --accent-sky: #06b6d4;
+  --accent-indigo: #6366f1;
+  --accent-teal: #0d9488;
+
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+
+  --bg-gradient:
+    linear-gradient(
+      135deg,
+      #f0f6ff 0%,
+      #f8fafc 50%,
+      #eef2ff 100%
+    );
+
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-bg-hover: rgba(255, 255, 255, 0.9);
+
+  --glass-border: rgba(255, 255, 255, 0.8);
+  --glass-border-hover: rgba(59, 130, 246, 0.3);
+
+  --radius-sm: 10px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+
+  --shadow-sm:
+    0 4px 12px rgba(15, 23, 42, 0.03);
+
+  --shadow-md:
+    0 12px 32px rgba(15, 23, 42, 0.06);
+
+  --shadow-lg:
+    0 20px 40px -15px rgba(15, 23, 42, 0.12);
+
+  --shadow-glow:
+    0 0 25px rgba(59, 130, 246, 0.25);
+
+  --transition:
+    all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+
+/* =========================================
+   CUSTOM SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+
+/* =========================================
+   LAYOUT & DYNAMIC BACKGROUND
+========================================= */
+
+.student-dashboard {
+  min-height: 100vh;
+
+  color: var(--text-main);
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(59, 130, 246, 0.12),
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 90% 20%,
+      rgba(6, 182, 212, 0.12),
+      transparent 45%
+    ),
+    radial-gradient(
+      circle at 50% 90%,
+      rgba(99, 102, 241, 0.08),
+      transparent 50%
+    ),
+    var(--bg-gradient);
+
+  position: relative;
+
+  overflow: hidden;
+
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Inter",
+    "Segoe UI",
+    Roboto,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+
+/* =========================================
+   GLOWING FLOATING ORBS
+========================================= */
+
+.student-dashboard::before {
+  content: "";
+
+  position: fixed;
+
+  width: 450px;
+  height: 450px;
+
+  top: 80px;
+  left: -200px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.18) 0%,
+      transparent 70%
+    );
+
+  filter: blur(60px);
+
+  pointer-events: none;
+
+  animation:
+    floatOrb 12s infinite alternate ease-in-out;
+}
+
+
+.student-dashboard::after {
+  content: "";
+
+  position: fixed;
+
+  width: 500px;
+  height: 500px;
+
+  right: -250px;
+  bottom: -100px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(99, 102, 241, 0.15) 0%,
+      transparent 70%
+    );
+
+  filter: blur(70px);
+
+  pointer-events: none;
+
+  animation:
+    floatOrb 15s infinite alternate-reverse ease-in-out;
+}
+
+
+@keyframes floatOrb {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  100% {
+    transform: translate(30px, 40px) scale(1.1);
+  }
+}
+
+
+/* =========================================
+   HEADER / NAVBAR
+========================================= */
+
+.student-header {
+  min-height: 76px;
+
+  padding: 14px 48px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: rgba(15, 23, 42, 0.85);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+
+  color: #ffffff;
+
+  border-bottom:
+    1px solid rgba(255, 255, 255, 0.1);
+
+  box-shadow:
+    0 10px 30px rgba(0, 0, 0, 0.15);
+
+  position: sticky;
+  top: 0;
+
+  z-index: 100;
+}
+
+
+/* =========================================
+   BRAND
+========================================= */
+
+.student-brand {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 0;
+}
+
+
+.student-brand-icon {
+  width: 44px;
+  height: 44px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-md);
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.15),
+      rgba(255, 255, 255, 0.05)
+    );
+
+  border:
+    1px solid rgba(255, 255, 255, 0.2);
+
+  font-size: 22px;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.3),
+    0 4px 12px rgba(0, 0, 0, 0.1);
+
+  transition: var(--transition);
+}
+
+
+.student-brand:hover .student-brand-icon {
+  transform: rotate(-5deg) scale(1.05);
+
+  border-color: var(--accent-blue);
+}
+
+
+.student-header h1 {
+  margin: 0;
+
+  font-size: 20px;
+  font-weight: 700;
+
+  letter-spacing: -0.4px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ffffff,
+      #cbd5e1
+    );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+
+.student-header p {
+  margin: 2px 0 0;
+
+  font-size: 11px;
+
+  color: #94a3b8;
+
+  font-weight: 500;
+}
+
+
+/* =========================================
+   HEADER RIGHT
+========================================= */
+
+.student-header-right {
+  display: flex;
+  align-items: center;
+
+  gap: 24px;
+
+  flex-shrink: 0;
+}
+
+
+.student-profile {
+  display: flex;
+  align-items: center;
+
+  gap: 12px;
+
+  padding: 4px 12px 4px 4px;
+
+  background:
+    rgba(255, 255, 255, 0.05);
+
+  border:
+    1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 30px;
+}
+
+
+.student-avatar {
+  width: 36px;
+  height: 36px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      #3b82f6,
+      #6366f1
+    );
+
+  color: #ffffff;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  box-shadow:
+    0 2px 8px rgba(59, 130, 246, 0.4);
+}
+
+
+.student-profile strong {
+  display: block;
+
+  font-size: 13px;
+
+  font-weight: 600;
+
+  color: #f8fafc;
+}
+
+
+.student-profile span {
+  display: block;
+
+  color: #94a3b8;
+
+  font-size: 10px;
+}
+
+
+/* =========================================
+   LOGOUT BUTTON
+========================================= */
+
+.logout-btn {
+  border:
+    1px solid rgba(255, 255, 255, 0.15);
+
+  background:
+    rgba(255, 255, 255, 0.07);
+
+  color: #ffffff;
+
+  padding: 9px 18px;
+
+  border-radius: var(--radius-sm);
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+
+.logout-btn:hover {
+  background: #ef4444;
+
+  border-color: #ef4444;
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 16px rgba(239, 68, 68, 0.35);
+}
+
+
+.logout-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.student-main {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 48px 24px 80px;
+
+  box-sizing: border-box;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+/* =========================================
+   WELCOME HERO
+========================================= */
+
+.welcome-section {
+  position: relative;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 30px;
+
+  padding: 36px 40px;
+
+  margin-bottom: 48px;
+
+  background: var(--glass-bg);
+
+  border:
+    1px solid var(--glass-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow:
+    var(--shadow-md),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  overflow: hidden;
+
+  transition: var(--transition);
+}
+
+
+.welcome-section:hover {
+  box-shadow:
+    var(--shadow-lg),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+
+/* Left Accent Line */
+
+.welcome-section::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 6px;
+  height: 100%;
+
+  background:
+    linear-gradient(
+      180deg,
+      var(--accent-blue),
+      var(--accent-sky),
+      var(--accent-indigo)
+    );
+
+  border-radius: 4px 0 0 4px;
+}
+
+
+/* Decorative Circle */
+
+.welcome-section::after {
+  content: "";
+
+  position: absolute;
+
+  top: -50%;
+  right: -20%;
+
+  width: 300px;
+  height: 300px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.12) 0%,
+      transparent 70%
+    );
+
+  pointer-events: none;
+}
+
+
+/* =========================================
+   WELCOME CONTENT
+========================================= */
+
+.welcome-content {
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 0;
+}
+
+
+.welcome-small {
+  margin: 0 0 8px;
+
+  color: var(--accent-blue);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.welcome-section h2 {
+  margin: 0 0 8px;
+
+  color: var(--primary-dark);
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.6px;
+
+  line-height: 1.25;
+}
+
+
+.welcome-section p:last-child {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 14px;
+
+  font-weight: 400;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   ERP INFO BOX
+========================================= */
+
+.welcome-info {
+  position: relative;
+
+  z-index: 2;
+
+  min-width: 140px;
+
+  padding: 14px 24px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.9),
+      rgba(241, 245, 249, 0.7)
+    );
+
+  border:
+    1px solid rgba(203, 213, 225, 0.6);
+
+  border-radius: var(--radius-md);
+
+  text-align: center;
+
+  box-shadow: var(--shadow-sm);
+
+  backdrop-filter: blur(10px);
+
+  transition: var(--transition);
+}
+
+
+.welcome-info:hover {
+  transform: scale(1.03);
+
+  border-color: var(--accent-blue);
+}
+
+
+.welcome-info span {
+  display: block;
+
+  color: var(--text-light);
+
+  font-size: 10px;
+
+  font-weight: 700;
+
+  letter-spacing: 1.2px;
+
+  text-transform: uppercase;
+}
+
+
+.welcome-info strong {
+  display: block;
+
+  margin-top: 4px;
+
+  color: var(--primary-dark);
+
+  font-size: 15px;
+
+  font-weight: 700;
+
+  word-break: break-word;
+}
+
+
+/* =========================================
+   SECTION HEADINGS
+========================================= */
+
+.section-heading {
+  margin-bottom: 28px;
+}
+
+
+.section-label {
+  margin: 0 0 6px;
+
+  color: var(--accent-blue);
+
+  font-size: 11px;
+
+  font-weight: 800;
+
+  letter-spacing: 2px;
+
+  text-transform: uppercase;
+}
+
+
+.section-heading h2 {
+  margin: 0 0 6px;
+
+  color: var(--primary-dark);
+
+  font-size: 24px;
+
+  font-weight: 800;
+
+  letter-spacing: -0.4px;
+
+  line-height: 1.3;
+}
+
+
+.section-heading p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 14px;
+
+  line-height: 1.5;
+}
+
+
+/* =========================================
+   SERVICE CARDS GRID
+========================================= */
+
+.service-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 28px;
+}
+
+
+/* =========================================
+   SERVICE CARD
+========================================= */
+
+.service-card {
+  position: relative;
+
+  min-height: 290px;
+
+  padding: 30px;
+
+  display: flex;
+
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  background: var(--glass-bg);
+
+  border:
+    1px solid var(--glass-border);
+
+  border-radius: var(--radius-lg);
+
+  box-shadow: var(--shadow-sm);
+
+  overflow: hidden;
+
+  transition: var(--transition);
+
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+
+
+/* Top Accent */
+
+.service-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background:
+    linear-gradient(
+      90deg,
+      var(--accent-blue),
+      var(--accent-sky),
+      var(--accent-indigo)
+    );
+
+  opacity: 0;
+
+  transition: var(--transition);
+}
+
+
+/* Shine Effect */
+
+.service-card::after {
+  content: "";
+
+  position: absolute;
+
+  top: -100px;
+  right: -100px;
+
+  width: 200px;
+  height: 200px;
+
+  border-radius: 50%;
+
+  background:
+    radial-gradient(
+      circle,
+      rgba(59, 130, 246, 0.15) 0%,
+      transparent 70%
+    );
+
+  opacity: 0;
+
+  transition: var(--transition);
+
+  pointer-events: none;
+}
+
+
+/* Hover */
+
+.service-card:hover {
+  transform: translateY(-8px);
+
+  background: var(--glass-bg-hover);
+
+  border-color: var(--glass-border-hover);
+
+  box-shadow:
+    var(--shadow-lg),
+    var(--shadow-glow);
+}
+
+
+.service-card:hover::before,
+.service-card:hover::after {
+  opacity: 1;
+}
+
+
+/* =========================================
+   CARD TOP
+========================================= */
+
+.service-card-top {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 22px;
+}
+
+
+.service-icon {
+  width: 56px;
+  height: 56px;
+
+  flex-shrink: 0;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius-md);
+
+  font-size: 26px;
+
+  transition: var(--transition);
+
+  box-shadow: var(--shadow-sm);
+}
+
+
+.service-card:hover .service-icon {
+  transform:
+    scale(1.1)
+    rotate(4deg);
+}
+
+
+/* =========================================
+   ICON COLORS
+========================================= */
+
+.complaint-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #e0f2fe,
+      #bae6fd
+    );
+
+  color: #0284c7;
+}
+
+
+.lost-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #f3e8ff,
+      #e9d5ff
+    );
+
+  color: #7e22ce;
+}
+
+
+.ai-icon {
+  background:
+    linear-gradient(
+      135deg,
+      #ccfbf1,
+      #99f6e4
+    );
+
+  color: #0f766e;
+}
+
+
+.service-number {
+  color: var(--text-light);
+
+  font-size: 12px;
+
+  font-weight: 800;
+
+  letter-spacing: 1.5px;
+
+  opacity: 0.7;
+}
+
+
+/* =========================================
+   CARD CONTENT
+========================================= */
+
+.service-content {
+  display: flex;
+
+  flex-direction: column;
+
+  height: 100%;
+
+  flex: 1;
+
+  position: relative;
+
+  z-index: 2;
+}
+
+
+.service-content h3 {
+  margin: 0 0 10px;
+
+  color: var(--primary-dark);
+
+  font-size: 20px;
+
+  font-weight: 700;
+
+  letter-spacing: -0.3px;
+}
+
+
+.service-content p {
+  margin: 0;
+
+  color: var(--text-muted);
+
+  font-size: 13.5px;
+
+  line-height: 1.65;
+
+  flex: 1;
+}
+
+
+/* =========================================
+   SERVICE BUTTON
+========================================= */
+
+.service-btn {
+  width: fit-content;
+
+  margin-top: 24px;
+
+  padding: 11px 20px;
+
+  display: inline-flex;
+
+  align-items: center;
+
+  gap: 8px;
+
+  border: none;
+
+  border-radius: var(--radius-sm);
+
+  background: var(--primary-dark);
+
+  color: #ffffff;
+
+  font-size: 12px;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: var(--transition);
+
+  box-shadow:
+    0 4px 14px rgba(15, 23, 42, 0.15);
+}
+
+
+.service-btn span {
+  font-size: 14px;
+
+  transition:
+    transform 0.3s ease;
+}
+
+
+.service-btn:hover {
+  background: var(--accent-blue);
+
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+
+.service-btn:hover span {
+  transform: translateX(5px);
+}
+
+
+.service-btn:active {
+  transform: translateY(0);
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.student-footer {
+  position: relative;
+
+  z-index: 2;
+
+  margin-top: 40px;
+
+  padding: 24px 30px;
+
+  border-top:
+    1px solid rgba(226, 232, 240, 0.8);
+
+  background:
+    rgba(255, 255, 255, 0.5);
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  color: var(--text-light);
+
+  font-size: 12px;
+
+  backdrop-filter: blur(10px);
+
+  box-sizing: border-box;
+}
+
+
+.student-footer div {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  gap: 10px;
+
+  text-align: center;
+}
+
+
+.student-footer strong {
+  color: var(--text-muted);
+
+  font-weight: 600;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 960px) {
+
+  .student-header {
+    padding: 14px 28px;
+  }
+
+
+  .student-main {
+    padding: 36px 20px 60px;
+  }
+
+
+  .welcome-section {
+    padding: 32px;
+  }
+
+
+  .service-grid {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+
+  .service-card:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+
+/* =========================================
+   SMALL TABLET / MOBILE
+========================================= */
+
+@media (max-width: 680px) {
+
+  /* Header */
+
+  .student-header {
+    min-height: 68px;
+
+    padding: 12px 18px;
+
+    gap: 15px;
+  }
+
+
+  .student-brand {
+    gap: 10px;
+  }
+
+
+  .student-brand-icon {
+    width: 39px;
+    height: 39px;
+
+    font-size: 18px;
+  }
+
+
+  .student-header h1 {
+    font-size: 17px;
+  }
+
+
+  .student-header p {
+    display: none;
+  }
+
+
+  .student-header-right {
+    gap: 8px;
+  }
+
+
+  .student-profile {
+    display: none;
+  }
+
+
+  .logout-btn {
+    padding: 8px 12px;
+
+    font-size: 10px;
+  }
+
+
+  /* Main */
+
+  .student-main {
+    width: 100%;
+
+    padding:
+      28px 16px 50px;
+  }
+
+
+  /* Welcome */
+
+  .welcome-section {
+    padding: 25px 22px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+
+    margin-bottom: 34px;
+  }
+
+
+  .welcome-section h2 {
+    font-size: 23px;
+
+    line-height: 1.3;
+  }
+
+
+  .welcome-section p:last-child {
+    font-size: 12px;
+
+    line-height: 1.5;
+  }
+
+
+  .welcome-info {
+    width: 100%;
+
+    min-width: 0;
+
+    box-sizing: border-box;
+
+    text-align: left;
+  }
+
+
+  /* Section */
+
+  .section-heading {
+    margin-bottom: 20px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 20px;
+  }
+
+
+  .section-heading p {
+    font-size: 12px;
+
+    line-height: 1.5;
+  }
+
+
+  /* Cards */
+
+  .service-grid {
+    grid-template-columns: 1fr;
+
+    gap: 18px;
+  }
+
+
+  .service-card:last-child {
+    grid-column: auto;
+  }
+
+
+  .service-card {
+    min-height: auto;
+
+    padding: 24px;
+  }
+
+
+  .service-icon {
+    width: 52px;
+    height: 52px;
+
+    font-size: 24px;
+  }
+
+
+  .service-content h3 {
+    font-size: 18px;
+  }
+
+
+  .service-content p {
+    font-size: 12px;
+
+    line-height: 1.65;
+  }
+
+
+  .service-btn {
+    margin-top: 20px;
+
+    padding: 10px 16px;
+
+    font-size: 11px;
+  }
+
+
+  /* Footer */
+
+  .student-footer {
+    margin-top: 20px;
+
+    padding: 20px 16px;
+
+    flex-direction: column;
+
+    gap: 8px;
+
+    text-align: center;
+
+    font-size: 10px;
+  }
+
+
+  .student-footer div {
+    flex-wrap: wrap;
+
+    justify-content: center;
+  }
+}
+
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 440px) {
+
+  /* Header */
+
+  .student-header {
+    padding: 11px 14px;
+  }
+
+
+  .student-brand {
+    gap: 8px;
+  }
+
+
+  .student-brand-icon {
+    width: 36px;
+    height: 36px;
+
+    font-size: 17px;
+  }
+
+
+  .student-header h1 {
+    font-size: 14px;
+  }
+
+
+  .logout-btn {
+    padding: 7px 10px;
+
+    font-size: 9px;
+  }
+
+
+  /* Main */
+
+  .student-main {
+    padding:
+      22px 12px 40px;
+  }
+
+
+  /* Welcome */
+
+  .welcome-section {
+    padding: 21px 17px;
+
+    border-radius: 16px;
+  }
+
+
+  .welcome-small {
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  .welcome-section h2 {
+    font-size: 20px;
+  }
+
+
+  .welcome-section p:last-child {
+    font-size: 11px;
+  }
+
+
+  .welcome-info {
+    padding: 13px 16px;
+  }
+
+
+  .welcome-info strong {
+    font-size: 13px;
+  }
+
+
+  /* Section */
+
+  .section-label {
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+
+
+  .section-heading h2 {
+    font-size: 18px;
+  }
+
+
+  .section-heading p {
+    font-size: 11px;
+  }
+
+
+  /* Cards */
+
+  .service-card {
+    padding: 20px;
+
+    border-radius: 16px;
+  }
+
+
+  .service-icon {
+    width: 47px;
+    height: 47px;
+
+    font-size: 21px;
+  }
+
+
+  .service-number {
+    font-size: 10px;
+  }
+
+
+  .service-content h3 {
+    font-size: 16px;
+  }
+
+
+  .service-content p {
+    font-size: 11px;
+
+    line-height: 1.6;
+  }
+
+
+  .service-btn {
+    width: 100%;
+
+    justify-content: center;
+
+    padding: 10px 12px;
+
+    font-size: 10px;
+  }
+
+
+  /* Footer */
+
+  .student-footer {
+    padding: 18px 12px;
+
+    font-size: 9px;
+  }
+}
+
+
+/* =========================================
+   VERY SMALL MOBILE
+========================================= */
+
+@media (max-width: 350px) {
+
+  .student-header {
+    padding: 10px 12px;
+  }
+
+
+  .student-brand-icon {
+    width: 34px;
+    height: 34px;
+
+    font-size: 16px;
+  }
+
+
+  .student-header h1 {
+    font-size: 13px;
+  }
+
+
+  .logout-btn {
+    padding: 7px 8px;
+
+    font-size: 8px;
+  }
+
+
+  .student-main {
+    padding:
+      20px 10px 35px;
+  }
+
+
+  .welcome-section {
+    padding: 19px 15px;
+  }
+
+
+  .welcome-section h2 {
+    font-size: 18px;
+  }
+
+
+  .welcome-section p:last-child {
+    font-size: 10px;
+  }
+
+
+  .welcome-info {
+    padding: 12px;
+  }
+
+
+  .service-card {
+    padding: 17px;
+
+    border-radius: 14px;
+  }
+
+
+  .service-icon {
+    width: 44px;
+    height: 44px;
+
+    font-size: 20px;
+  }
+
+
+  .service-content h3 {
+    font-size: 15px;
+  }
+
+
+  .service-content p {
+    font-size: 10px;
+  }
+
+
+  .service-btn {
+    font-size: 9px;
+
+    padding: 9px 10px;
+  }
+}
+
+
+/* =========================================
+   EXTRA SMALL DEVICES
+========================================= */
+
+@media (max-width: 300px) {
+
+  .student-brand h1 {
+    font-size: 12px;
+  }
+
+
+  .student-brand-icon {
+    width: 32px;
+    height: 32px;
+
+    font-size: 15px;
+  }
+
+
+  .logout-btn {
+    padding: 6px 7px;
+
+    font-size: 8px;
+  }
+
+
+  .welcome-section h2 {
+    font-size: 17px;
+  }
+
+
+  .service-card {
+    padding: 15px;
+  }
+}
