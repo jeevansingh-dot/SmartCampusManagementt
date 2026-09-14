@@ -1,8 +1,8 @@
 const express = require("express");
 const { GoogleGenAI } = require("@google/genai");
 
-const Complaint = require("../models/Complaint");
-const LostFound = require("../models/LostFound");
+const Complaint = require("../models/complaint");
+const LostFound = require("../models/lostfound");
 
 const router = express.Router();
 
