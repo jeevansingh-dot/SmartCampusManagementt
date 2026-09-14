@@ -5,7 +5,7 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 
-const Complaint = require("../models/Complaint");
+const Complaint = require("../models/complaint");
 const adminMiddleware = require("../middleware/adminMiddleware");
 
 // =========================
