@@ -6,7 +6,7 @@ const path = require("path");
 const fs = require("fs");
 
 const LostFound =
-  require("../models/LostFound");
+  require("../models/lostFound");
 
 const adminMiddleware =
   require("../middleware/adminMiddleware");
